@@ -1,0 +1,6 @@
+@prn_odata_HostAddress = http://localhost:5028
+
+GET {{prn_odata_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
