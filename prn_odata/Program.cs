@@ -28,7 +28,16 @@ builder.Services.AddControllers().AddOData(opt =>
     opt.AddRouteComponents("odata", odataBuilder.GetEdmModel())
         .Select().Filter().OrderBy().Expand().Count().SetMaxTop(1000);
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowNextJs",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173", "http://localhost:5174")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +46,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowNextJs");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

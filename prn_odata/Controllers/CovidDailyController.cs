@@ -17,6 +17,6 @@ public class CovidDailyController : ControllerBase
     [HttpGet]   
     public IQueryable<CovidDaily> Get()
     {
-        return _context.CovidDaily;
+        return _context.coviddaily;
     }
 }

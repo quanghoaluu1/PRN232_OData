@@ -17,6 +17,6 @@ public class CovidCaseController : ControllerBase
     [HttpGet]   
     public IQueryable<CovidCase> Get()
     {
-        return _context.CovidCase;
+        return _context.covidcase;
     }
 }
